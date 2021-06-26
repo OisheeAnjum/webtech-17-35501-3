@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register Form</title>
+</head>
+<body>
+	<form method="post" action="">
+  <table>
+   <tr>
+    <td>Name :</td>
+    <td><input type="text" name="name" placeholder="name"></td>
+   </tr>
+   
+   
+   <tr>
+    <td>Email :</td>
+    <td><input type="email" name="email"></td>
+   </tr>
+
+   <tr>
+    <td>Date of birth :</td>
+    <td><input type="date" name="dateofbirth"></td>
+   </tr>
+
+   <tr>
+    <td>Gender :</td>
+    <td>
+
+     <input type="radio" name="gender" value="female" <?php if(isset($gender) && $gender ='female') echo 'checked="checked"'; ?> >Female
+	 <input type="radio" name="gender" value="male" <?php if(isset($gender) && $gender ='male') echo 'checked="checked"'; ?> >Male
+	 <input type="radio" name="gender" value="other" <?php if(isset($gender) && $gender ='other') echo 'checked="checked"'; ?> >Other
+
+    </td>
+   </tr>
+
+   <tr>
+    <td>Degree :</td>
+    <td>
+     <input type="checkbox" name="degree :"  <?php if(isset($degree) && $degree ='SSC') echo 'checked="checked"'; ?> > SSC
+     <input type="checkbox" name="degree :" <?php if(isset($degree) && $degree ='HSC') echo 'checked="checked"'; ?> > > HSC
+     <input type="checkbox" name="degree :" <?php if(isset($degree) && $degree ='BSC') echo 'checked="checked"'; ?> > > BSC
+     <input type="checkbox" name="degree :" <?php if(isset($degree) && $degree ='MSC') echo 'checked="checked"'; ?> > > MSC
+
+    </td>
+   </tr>
+
+
+   <tr>
+    <td>Blood Group :</td>
+    <td>
+     <select name="bloodgroup">
+     <option value = "NULL"></option>
+      <option>O+</option>
+      <option>O-</option>
+      <option>A+</option>
+      <option>A-</option>
+      <option>AB+</option>
+      <option>AB-</option>
+      <option>B+</option>
+      <option>B-</option>
+</select>
+    </td>
+   </tr>
+
+   <tr>
+    <td></td>
+    <td><input type="submit" name="submit"></td>
+   </tr>
+ 
+  
+  </table>
+ </form>
+
+
+</body>
+</html>
+<?php
+
+    
+	if(isset($_POST['submit']))
+	{
+	if($_POST['name'] == "")
+		{echo "Name cannot be empty\n";}
+	$name = $_POST['name'];	
+	if (!preg_match("/^[a-zA-Z -]*$/",$name))
+ 	{
+		echo "only letter allowed in name field/n";
+	}
+	if($_POST['email'] == "")
+	{echo "mail field cannot be empty";}
+	$bloodgroup = $_POST['bloodgroup'];	
+	if($bloodgroup == "NULL")
+		{echo "blood group must be selected\n";}
+	if(empty($_POST['gender']))
+		{echo "gender must be selected";}
+	if(empty($_POST['degree']))
+		{echo "degree must be selected";}
+
+	}
+
+
+
+
+
+
+
+?>
